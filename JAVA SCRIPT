@@ -1,0 +1,50 @@
+// scripts.js
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.getElementById('navbar');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const scrollIndicator = document.getElementById('scroll-indicator');
+
+  window.addEventListener('scroll', () => {
+    // Change navbar background color on scroll
+    if (window.scrollY > 50) {
+      navbar.style.backgroundColor = '#222';
+    } else {
+      navbar.style.backgroundColor = '#333';
+    }
+
+    // Update scroll indicator
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (window.scrollY / maxScroll) * 100;
+    scrollIndicator.style.width = scrollPercent + '%';
+
+    // Highlight active link
+    let current = '';
+    document.querySelectorAll('section').forEach(section => {
+      const sectionTop = section.offsetTop - 60;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Smooth scrolling for nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      window.scrollTo({
+        top: targetElement.offsetTop - 60,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
