@@ -1,0 +1,86 @@
+#CSS 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  background-color: #333;
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #575757;
+  color: #fff;
+}
+
+nav ul .dropdown {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  top: 100%;
+  left: 0;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+nav ul .dropdown li {
+  display: block;
+}
+
+nav ul .dropdown li a {
+  padding: 10px;
+}
+
+nav ul li:hover .dropdown {
+  display: block;
+}
+
+.nav-link.active {
+  background-color: #575757;
+  color: #fff;
+}
+
+#scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background-color: #4caf50;
+  width: 0;
+  z-index: 1001;
+}
+
+.content {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+section {
+  height: 100vh;
+}
